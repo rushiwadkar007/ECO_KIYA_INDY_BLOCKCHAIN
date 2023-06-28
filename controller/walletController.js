@@ -11,29 +11,27 @@ const walletDetails = async (req, res) => {
     const { referenceNO, schemaID, credDefID, roleType } = req.query;
 
     try {
-
       const credentialsData = await axios.get(
         blockchainHolderURL + `/credentials`
       );
       if (credentialsData.data.results.length > 0) {
-
         const filteredData = credentialsData.data.results.map((item, index) => {
           if (item.attrs.RefNumber === referenceNO && referenceNO !== null) {
-                return item;
+            return item;
           } else if (item.schemaID === schemaID && schemaID !== null) {
-                return item;
+            return item;
           } else if (item.cred_def_id === credDefID && credDefID !== null) {
-                return item;  
+            return item;
           } else if (item.attrs.Type === roleType && roleType !== null) {
-                return item;
+            return item;
           }
         });
 
-        const fData = filteredData.filter(item =>{
-            if(item !== null){
-                return item;
-            }
-        })
+        const fData = filteredData.filter((item) => {
+          if (item !== null) {
+            return item;
+          }
+        });
 
         res.status(200).json({
           credData: fData,
@@ -59,4 +57,46 @@ const walletDetails = async (req, res) => {
   }
 };
 
-module.exports = { walletDetails };
+const didDetails = async (req, res) => {
+  try {
+    const { did } = req.query;
+    console.log("did ", did)
+    const didData = await axios.get(blockchainHolderURL + `/wallet/did`);
+
+    // console.log("wallet did", didData.data.results);
+
+    if (didData.data.results.length > 0) {
+      const filteredData = didData.data.results.map((item, index) => {
+        if (item.did === did && did !== null && did !== "") {
+          return item;
+        }
+        else if(did === ""){
+            return item
+        }
+      });
+      console.log("fData", filteredData);
+      const fData = filteredData.filter((item) => {
+        if (item !== null || item !== undefined) {
+          return item;
+        }
+      });
+      
+      res.status(200).json({
+        credData: fData,
+        status: "Wallet DIDs Rendered",
+      });
+    } else {
+      return res.status(400).json({
+        data: null,
+        status: "NOT FOUND!",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      data: null,
+      error: error,
+    });
+  }
+};
+
+module.exports = { walletDetails, didDetails };

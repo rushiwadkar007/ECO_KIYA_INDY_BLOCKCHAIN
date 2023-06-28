@@ -8,8 +8,10 @@ var jsonParser = bodyParser.json();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const {walletDetails} = require("../controller/walletController");
+const {walletDetails, didDetails} = require("../controller/walletController");
 
 router.get("/walletDetails", walletDetails);
+
+router.get("/didData", didDetails);
 
 module.exports = router;
