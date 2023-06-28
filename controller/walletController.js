@@ -8,12 +8,12 @@ const blockchainHolderURL = process.env.Indy_Blockchain_HOLDERURL;
 // state, role, connection_id
 const walletDetails = async (req, res) => {
   try {
-    const { referenceNO, schemaID, credDefID, roleType, count } = req.query;
+    const { referenceNO, schemaID, credDefID, roleType } = req.query;
 
     try {
 
       const credentialsData = await axios.get(
-        blockchainHolderURL + `/credentials?count=${Number(count[0])}`
+        blockchainHolderURL + `/credentials`
       );
       if (credentialsData.data.results.length > 0) {
 
