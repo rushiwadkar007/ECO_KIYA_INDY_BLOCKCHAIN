@@ -34,68 +34,71 @@ const sendProposal = async (req, res) => {
         'Content-Type': 'application/json'
       };
 
-      const proposalBody = {
+      // const proposalBody = {
 
-        auto_remove: true,
+      //   auto_remove: true,
 
-        comment: `This credential proposal has been proposed by Reference ID  ${referenceNo}`,
+      //   comment: `This credential proposal has been proposed by Reference ID  ${referenceNo}`,
 
-        connection_id: `0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30`,
+      //   connection_id: `0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30`,
 
-        credential_preview: {
-          "@type": "issue-credential/2.0/credential-preview",
+      //   credential_preview: {
+      //     "@type": "issue-credential/2.0/credential-preview",
 
-          attributes: [
-            {
-              name: "RefNumber",
+      //     attributes: [
+      //       {
+      //         name: "RefNumber",
 
-              value: `${referenceNo}`,
-            },
+      //         value: `${referenceNo}`,
+      //       },
 
-            {
-              name: "TreeData",
+      //       {
+      //         name: "TreeData",
 
-              value: attributes,
-            },
+      //         value: attributes,
+      //       },
 
-            {
-              name: "Name",
+      //       {
+      //         name: "Name",
 
-              value: "ECO TRUST DATA",
-            },
+      //         value: "ECO TRUST DATA",
+      //       },
 
-            {
-              name: "Type",
+      //       {
+      //         name: "Type",
 
-              value: roleType,
-            },
-          ],
-        },
-          "indy": {
-              "cred_def_id": "TLASnc1X3bknwHcadpxP39:3:CL:147:university",
-              "issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-              "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-              "schema_issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-              "schema_name": "Eco-Trust-Data",
-              "schema_version": "1.0"
-          },
+      //         value: roleType,
+      //       },
+      //     ],
+      //   },
+      //     "indy": {
+      //         "cred_def_id": "TLASnc1X3bknwHcadpxP39:3:CL:147:university",
+      //         "issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
+      //         "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+      //         "schema_issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
+      //         "schema_name": "Eco-Trust-Data",
+      //         "schema_version": "1.0"
+      //     },
 
-        trace: false,
-      };
+      //   trace: false,
+      // };
+
+      const proposalBody = req.body
 
       console.log("holderBlockchainURL + sendProposalHolder", holderBlockchainURL + sendProposalHolder);
 
       await axios.post(
         "http://172.20.2.139:8092/issue-credential-2.0/send-proposal",
-        {headers, proposalBody} 
+        proposalBody,
+        {headers} 
       ).then((res)=>{
         console.log("response object", res);
       }).catch((error) =>{
         console.log("response error ");
       });      
-      res.status(200).json({
-        status: "Credentials Generation Proposal Accepted."
-      });
+      // res.status(200).json({
+      //   status: "Credentials Generation Proposal Accepted."
+      // });
       // console.log("sendProposal Response ", sendProposalResp);
     } catch (error) {
       res.status(404).json({
