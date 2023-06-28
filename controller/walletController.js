@@ -18,28 +18,25 @@ const walletDetails = async (req, res) => {
       if (credentialsData.data.results.length > 0) {
 
         const filteredData = credentialsData.data.results.map((item, index) => {
-
-          if (item.attrs.RefNumber === referenceNO && referenceNO !== null || referenceNO !== "") {
-            if(item !== null){
+          if (item.attrs.RefNumber === referenceNO && referenceNO !== null) {
                 return item;
-            }            
-          } else if (item.schemaID === schemaID && schemaID !== null || schemaID !== "") {
-            if(item !== null){
+          } else if (item.schemaID === schemaID && schemaID !== null) {
                 return item;
-            }     
-          } else if (item.cred_def_id === credDefID && credDefID !== null || credDefID !== "") {
-            if(item !== null){
+          } else if (item.cred_def_id === credDefID && credDefID !== null) {
+                return item;  
+          } else if (item.attrs.Type === roleType && roleType !== null) {
                 return item;
-            }     
-          } else if (item.attrs.Type === roleType && roleType !== null || roleType !== "") {
-            if(item !== null){
-                return item;
-            }     
           }
         });
 
+        const fData = filteredData.filter(item =>{
+            if(item !== null){
+                return item;
+            }
+        })
+
         res.status(200).json({
-          credData: filteredData,
+          credData: fData,
           status: "Wallet Data Rendered",
         });
       } else {

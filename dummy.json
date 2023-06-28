@@ -1,0 +1,44 @@
+{
+    "credData": [
+        {
+            "referent": "52e88c38-dcb4-4c36-b06e-1b5a75070e0f",
+            "attrs": {
+                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3",
+                "Name": "Abhi",
+                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
+                "Type": "Trustee"
+            },
+            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
+            "rev_reg_id": null,
+            "cred_rev_id": null
+        },
+        {
+            "referent": "55ef1c43-65b0-4c83-a531-a634516db4eb",
+            "attrs": {
+                "Name": "Abhi",
+                "Type": "Trustee",
+                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
+                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3"
+            },
+            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
+            "rev_reg_id": null,
+            "cred_rev_id": null
+        },
+        {
+            "referent": "bd6ed10d-c75f-4266-9e4e-9648fec14928",
+            "attrs": {
+                "Type": "Trustee",
+                "Name": "Abhi",
+                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
+                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3"
+            },
+            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
+            "rev_reg_id": null,
+            "cred_rev_id": null
+        }
+    ],
+    "status": "Wallet Data Rendered"
+}
