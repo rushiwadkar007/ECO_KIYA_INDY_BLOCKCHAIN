@@ -11,7 +11,9 @@ const walletRoute = require("./routes/walletRoutes");
 
 //middlewares
 app.use(express.json({ limit: "5mb", extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: 'http://120.20.2.139'
+}));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -21,7 +23,7 @@ app.get("/", (req, res) => {
 // Define a route
 app.use("/eco-blockchain-api/v1", blockchainRoute);
 app.use("/credentials/v1", credentialRoute);
-app.use("/eco-wallet-details/v1", walletRoute)
+app.use("/eco-wallet-details/v1", walletRoute);
 
 // Start the server
 app.listen(port, () => {
