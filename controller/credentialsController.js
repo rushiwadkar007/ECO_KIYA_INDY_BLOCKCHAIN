@@ -14,13 +14,10 @@ const {
 } = require("../endpoints/blockchainEndpoints");
 
 const sendProposal = async (req, res) => {
-
   try {
-
     const { attributes, referenceNo, roleType } = req.body;
 
     try {
-
       const connectiondataResp = await axios.get(
         holderBlockchainURL + `/connections`
       );
@@ -30,8 +27,8 @@ const sendProposal = async (req, res) => {
       const conn_id = "0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30";
 
       const headers = {
-        "Accept": "application/json",
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       };
 
       // const proposalBody = {
@@ -83,19 +80,29 @@ const sendProposal = async (req, res) => {
       //   trace: false,
       // };
 
-      const proposalBody = req.body
+      const proposalBody = req.body;
 
-      console.log("holderBlockchainURL + sendProposalHolder", holderBlockchainURL + sendProposalHolder);
+      console.log(
+        "holderBlockchainURL + sendProposalHolder",
+        holderBlockchainURL + sendProposalHolder
+      );
 
-      await axios.post(
-        "http://172.20.2.139:8092/issue-credential-2.0/send-proposal",
-        proposalBody,
-        {headers} 
-      ).then((res)=>{
-        console.log("response object", res);
-      }).catch((error) =>{
-        console.log("response error ");
-      });      
+      await axios
+        .post(
+          "http://172.20.2.139:8092/issue-credential-2.0/send-proposal",
+          proposalBody,
+          { headers }
+        )
+        .then(async (result) => {
+          console.log("response object", result["data"]);
+          res.status(200).send({
+            data: result["data"],
+            status: "Credentials Generation Proposal Accepted.",
+          });
+        })
+        .catch((error) => {
+          console.log("response error ");
+        });
       // res.status(200).json({
       //   status: "Credentials Generation Proposal Accepted."
       // });

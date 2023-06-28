@@ -1,44 +1,231 @@
 {
-    "credData": [
-        {
-            "referent": "52e88c38-dcb4-4c36-b06e-1b5a75070e0f",
-            "attrs": {
-                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3",
-                "Name": "Abhi",
-                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
-                "Type": "Trustee"
-            },
-            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
-            "rev_reg_id": null,
-            "cred_rev_id": null
-        },
-        {
-            "referent": "55ef1c43-65b0-4c83-a531-a634516db4eb",
-            "attrs": {
-                "Name": "Abhi",
-                "Type": "Trustee",
-                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
-                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3"
-            },
-            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
-            "rev_reg_id": null,
-            "cred_rev_id": null
-        },
-        {
-            "referent": "bd6ed10d-c75f-4266-9e4e-9648fec14928",
-            "attrs": {
-                "Type": "Trustee",
-                "Name": "Abhi",
-                "TreeData": "{   \"status\": \"Success\",    \"result\": {     \"lastName\": \"TRIPATHI\",     \"placeOfBirth\": \"IND\",     \"addresses\": [       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Principal\",         \"Postcode\": \"411045\"       },       {         \"AddressLine3\": \"Baner\",         \"AddressLine2\": \"Lane no.6\",         \"AddressLine1\": \" Ram Indu Park\",         \"State\": \"\",         \"City\": \"Pune\",         \"AddressType\": \"Mailing\",         \"Postcode\": \"411045\"       }     ],     \"gender\": \"M\",     \"mobileNumber\": 9359306080,     \"document\": [       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Passport\",         \"documentId\": \"J7124B52\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Video Kyc\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Passport_J7124B521687164706067.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Selfie\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Selfie1687164771061.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Signature\",         \"documentId\": \"19166393IMAAI8\",         \"documentName\": \"100217_Signature1687167668289.jpg\"       },       {         \"expiryDate\": \"2025-05-31 00:00:00.0\",         \"CountryOfIssue\": \"India\",         \"documenttype\": \"Utility bill\",         \"documentId\": \"Residence-Utility bill-100217-0-580\",         \"documentName\": \"MicrosoftTeams-image (7)523.png\"       }     ],     \"title\": \"Mr\",     \"datofBirth\": \"1974-10-31 00:00:00.0\",     \"firstName\": \"ARVIND\",     \"emailAddress\": \"at@gmail.com\",     \"nationality\": \"India\",     \"middleName\": \"\",     \"maritalStatus\": \"Married\"   } }",
-                "RefNumber": "8d69dg3f-f68c-4d59-a283-601f127cd7d3"
-            },
-            "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-            "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
-            "rev_reg_id": null,
-            "cred_rev_id": null
-        }
-    ],
-    "status": "Wallet Data Rendered"
-}
+    status: 200,
+    statusText: 'OK',
+    headers: AxiosHeaders {
+      'content-type': 'application/json; charset=utf-8',
+      'content-length': '6629',
+      date: 'Wed, 28 Jun 2023 15:19:32 GMT',
+      server: 'Python/3.8 aiohttp/3.8.4',
+      connection: 'close'
+    },
+    config: {
+      transitional: {
+        silentJSONParsing: true,
+        forcedJSONParsing: true,
+        clarifyTimeoutError: false
+      },
+      adapter: [ 'xhr', 'http' ],
+      transformRequest: [ [Function: transformRequest] ],
+      transformResponse: [ [Function: transformResponse] ],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: { FormData: [Function], Blob: null },
+      validateStatus: [Function: validateStatus],
+      headers: AxiosHeaders {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'User-Agent': 'axios/1.4.0',
+        'Content-Length': '2938',
+        'Accept-Encoding': 'gzip, compress, deflate, br'
+      },
+      method: 'post',
+      url: 'http://172.20.2.139:8092/issue-credential-2.0/send-proposal',
+      data: '{"auto_remove":true,"comment":"ddf","connection_id":"0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30","credential_preview":{"@type":"issue-credential/2.0/credential-preview","attributes":[{"name":"RefNumber","value":"sdsffdfdd-a388-4901-86a9-abc82b23cf01"},{"name":"TreeData","value":"{   \\"status\\": \\"Success\\",    \\"result\\": {     \\"lastName\\": \\"TRIPATHI\\",     \\"placeOfBirth\\": \\"IND\\",     \\"addresses\\": [       {         \\"AddressLine3\\": \\"Baner\\",         \\"AddressLine2\\": \\"Lane no.6\\",         \\"AddressLine1\\": \\" Ram Indu Park\\",         \\"State\\": \\"\\",         \\"City\\": \\"Pune\\",         \\"AddressType\\": \\"Principal\\",         \\"Postcode\\": \\"411045\\"       },       {         \\"AddressLine3\\": \\"Baner\\",         \\"AddressLine2\\": \\"Lane no.6\\",         \\"AddressLine1\\": \\" Ram Indu Park\\",         \\"State\\": \\"\\",         \\"City\\": \\"Pune\\",         \\"AddressType\\": \\"Mailing\\",         \\"Postcode\\": \\"411045\\"       }     ],     \\"gender\\": \\"M\\",     \\"mobileNumber\\": 9359306080,     \\"document\\": [       {         \\"expiryDate\\": \\"2025-05-31 00:00:00.0\\",         \\"CountryOfIssue\\": \\"India\\",         \\"documenttype\\": \\"Passport\\",         \\"documentId\\": \\"J7124B52\\",         \\"documentName\\": \\"100217_Passport_J7124B521687164706067.jpg\\"       },       {         \\"expiryDate\\": \\"2025-05-31 00:00:00.0\\",         \\"CountryOfIssue\\": \\"India\\",         \\"documenttype\\": \\"Video Kyc\\",         \\"documentId\\": \\"19166393IMAAI8\\",         \\"documentName\\": \\"100217_Passport_J7124B521687164706067.jpg\\"       },       {         \\"expiryDate\\": \\"2025-05-31 00:00:00.0\\",         \\"CountryOfIssue\\": \\"India\\",         \\"documenttype\\": \\"Selfie\\",         \\"documentId\\": \\"19166393IMAAI8\\",         \\"documentName\\": \\"100217_Selfie1687164771061.jpg\\"       },       {         \\"expiryDate\\": \\"2025-05-31 00:00:00.0\\",         \\"CountryOfIssue\\": \\"India\\",         \\"documenttype\\": \\"Signature\\",         \\"documentId\\": \\"19166393IMAAI8\\",         \\"documentName\\": \\"100217_Signature1687167668289.jpg\\"       },       {         \\"expiryDate\\": \\"2025-05-31 00:00:00.0\\",         \\"CountryOfIssue\\": \\"India\\",         \\"documenttype\\": \\"Utility bill\\",         \\"documentId\\": \\"Residence-Utility bill-100217-0-580\\",         \\"documentName\\": \\"MicrosoftTeams-image (7)523.png\\"       }     ],     \\"title\\": \\"Mr\\",     \\"datofBirth\\": \\"1974-10-31 00:00:00.0\\",     \\"firstName\\": \\"ARVIND\\",     \\"emailAddress\\": \\"at@gmail.com\\",     \\"nationality\\": \\"India\\",     \\"middleName\\": \\"\\",     \\"maritalStatus\\": \\"Married\\"   } }"},{"name":"Type","value":"SETTLER"},{"name":"Name","value":"Madhav P."}]},"filter":{"indy":{"cred_def_id":"6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1","issuer_did":"3EcM8j9RTNLQMbwQ1K8Dy3","schema_id":"6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0","schema_issuer_did":"3EcM8j9RTNLQMbwQ1K8Dy3","schema_name":"Eco-Trust-Data","schema_version":"1.0"}},"trace":false}'
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype] {
+        abort: [Function (anonymous)],
+        aborted: [Function (anonymous)],
+        connect: [Function (anonymous)],
+        error: [Function (anonymous)],
+        socket: [Function (anonymous)],
+        timeout: [Function (anonymous)],
+        prefinish: [Function: requestOnPrefinish]
+      },
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: null,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: Socket {
+        connecting: false,
+        _hadError: false,
+        _parent: null,
+        _host: null,
+        _readableState: [ReadableState],
+        _events: [Object: null prototype],
+        _eventsCount: 7,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        allowHalfOpen: false,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        parser: null,
+        _httpMessage: [Circular *1],
+        [Symbol(async_id_symbol)]: 91,
+        [Symbol(kHandle)]: [TCP],
+        [Symbol(kSetNoDelay)]: false,
+        [Symbol(lastWriteQueueSize)]: 0,
+        [Symbol(timeout)]: null,
+        [Symbol(kBuffer)]: null,
+        [Symbol(kBufferCb)]: null,
+        [Symbol(kBufferGen)]: null,
+        [Symbol(kCapture)]: false,
+        [Symbol(kBytesRead)]: 0,
+        [Symbol(kBytesWritten)]: 0,
+        [Symbol(RequestTimeout)]: undefined
+      },
+      _header: 'POST /issue-credential-2.0/send-proposal HTTP/1.1\r\n' +
+        'Accept: application/json\r\n' +
+        'Content-Type: application/json\r\n' +
+        'User-Agent: axios/1.4.0\r\n' +
+        'Content-Length: 2938\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: 172.20.2.139:8092\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: Agent {
+        _events: [Object: null prototype],
+        _eventsCount: 2,
+        _maxListeners: undefined,
+        defaultPort: 80,
+        protocol: 'http:',
+        options: [Object: null prototype],
+        requests: [Object: null prototype] {},
+        sockets: [Object: null prototype],
+        freeSockets: [Object: null prototype] {},
+        keepAliveMsecs: 1000,
+        keepAlive: false,
+        maxSockets: Infinity,
+        maxFreeSockets: 256,
+        scheduling: 'lifo',
+        maxTotalSockets: Infinity,
+        totalSocketCount: 1,
+        [Symbol(kCapture)]: false
+      },
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/issue-credential-2.0/send-proposal',
+      _ended: true,
+      res: IncomingMessage {
+        _readableState: [ReadableState],
+        _events: [Object: null prototype],
+        _eventsCount: 4,
+        _maxListeners: undefined,
+        socket: [Socket],
+        httpVersionMajor: 1,
+        httpVersionMinor: 1,
+        httpVersion: '1.1',
+        complete: true,
+        rawHeaders: [Array],
+        rawTrailers: [],
+        aborted: false,
+        upgrade: false,
+        url: '',
+        method: null,
+        statusCode: 200,
+        statusMessage: 'OK',
+        client: [Socket],
+        _consuming: true,
+        _dumped: false,
+        req: [Circular *1],
+        responseUrl: 'http://172.20.2.139:8092/issue-credential-2.0/send-proposal',
+        redirects: [],
+        [Symbol(kCapture)]: false,
+        [Symbol(kHeaders)]: [Object],
+        [Symbol(kHeadersCount)]: 10,
+        [Symbol(kTrailers)]: null,
+        [Symbol(kTrailersCount)]: 0,
+        [Symbol(RequestTimeout)]: undefined
+      },
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: '172.20.2.139',
+      protocol: 'http:',
+      _redirectable: Writable {
+        _writableState: [WritableState],
+        _events: [Object: null prototype],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        _options: [Object],
+        _ended: true,
+        _ending: true,
+        _redirectCount: 0,
+        _redirects: [],
+        _requestBodyLength: 2938,
+        _requestBodyBuffers: [],
+        _onNativeResponse: [Function (anonymous)],
+        _currentRequest: [Circular *1],
+        _currentUrl: 'http://172.20.2.139:8092/issue-credential-2.0/send-proposal',
+        [Symbol(kCapture)]: false
+      },
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype] {
+        accept: [Array],
+        'content-type': [Array],
+        'user-agent': [Array],
+        'content-length': [Array],
+        'accept-encoding': [Array],
+        host: [Array]
+      }
+    },
+    data: {
+      connection_id: '0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30',
+      state: 'proposal-sent',
+      auto_offer: false,
+      auto_issue: false,
+      cred_ex_id: '85ebefd0-df7e-4dc2-b075-4716e64ca3f8',
+      thread_id: '314ea0ef-3ced-4891-945e-b76953c28c41',
+      role: 'holder',
+      cred_preview: {
+        '@type': 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/2.0/credential-preview',
+        attributes: [Array]
+      },
+      trace: false,
+      created_at: '2023-06-28T15:19:32.063379Z',
+      initiator: 'self',
+      cred_proposal: {
+        '@type': 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/2.0/propose-credential',
+        '@id': '314ea0ef-3ced-4891-945e-b76953c28c41',
+        comment: 'ddf',
+        formats: [Array],
+        credential_preview: [Object],
+        'filters~attach': [Array]
+      },
+      updated_at: '2023-06-28T15:19:32.063379Z',
+      auto_remove: true,
+      by_format: { cred_proposal: [Object] }
+    }
+  }
