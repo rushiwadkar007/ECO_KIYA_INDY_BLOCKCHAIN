@@ -15,70 +15,16 @@ const {
 
 const sendProposal = async (req, res) => {
   try {
-    const { attributes, referenceNo, roleType } = req.body;
 
     try {
-      const connectiondataResp = await axios.get(
-        holderBlockchainURL + `/connections`
-      );
-
-      // const conn_id = connectiondataResp.data["results"][0].connection_id;
-
-      const conn_id = "0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30";
+      // const connectiondataResp = await axios.get(
+      //   holderBlockchainURL + `/connections`
+      // );
 
       const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
       };
-
-      // const proposalBody = {
-
-      //   auto_remove: true,
-
-      //   comment: `This credential proposal has been proposed by Reference ID  ${referenceNo}`,
-
-      //   connection_id: `0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30`,
-
-      //   credential_preview: {
-      //     "@type": "issue-credential/2.0/credential-preview",
-
-      //     attributes: [
-      //       {
-      //         name: "RefNumber",
-
-      //         value: `${referenceNo}`,
-      //       },
-
-      //       {
-      //         name: "TreeData",
-
-      //         value: attributes,
-      //       },
-
-      //       {
-      //         name: "Name",
-
-      //         value: "ECO TRUST DATA",
-      //       },
-
-      //       {
-      //         name: "Type",
-
-      //         value: roleType,
-      //       },
-      //     ],
-      //   },
-      //     "indy": {
-      //         "cred_def_id": "TLASnc1X3bknwHcadpxP39:3:CL:147:university",
-      //         "issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-      //         "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-      //         "schema_issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-      //         "schema_name": "Eco-Trust-Data",
-      //         "schema_version": "1.0"
-      //     },
-
-      //   trace: false,
-      // };
 
       const proposalBody = {
         "auto_remove": true,
@@ -118,11 +64,6 @@ const sendProposal = async (req, res) => {
         "trace": false
       }
 
-      console.log(
-        "holderBlockchainURL + sendProposalHolder",
-        holderBlockchainURL + sendProposalHolder
-      );
-
       await axios
         .post(
           "http://172.20.2.139:8092/issue-credential-2.0/send-proposal",
@@ -130,7 +71,6 @@ const sendProposal = async (req, res) => {
           { headers }
         )
         .then(async (result) => {
-          console.log("response object", result["data"]);
           res.status(200).send({
             data: result["data"],
             status: "Credentials Generation Proposal Accepted.",
@@ -142,10 +82,6 @@ const sendProposal = async (req, res) => {
             status: "Credentials Generation Proposal is not Accepted.",
           });
         });
-      // res.status(200).json({
-      //   status: "Credentials Generation Proposal Accepted."
-      // });
-      // console.log("sendProposal Response ", sendProposalResp);
     } catch (error) {
       res.status(404).json({
         data: null,
