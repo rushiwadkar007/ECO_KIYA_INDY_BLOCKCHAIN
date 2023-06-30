@@ -80,7 +80,43 @@ const sendProposal = async (req, res) => {
       //   trace: false,
       // };
 
-      const proposalBody = req.body;
+      const proposalBody = {
+        "auto_remove": true,
+        "comment": "ECO Credentials Generation Request",
+        "connection_id": "0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30",
+        "credential_preview": {
+            "@type": "issue-credential/2.0/credential-preview",
+            "attributes": [
+                {
+                    "name": "RefNumber",
+                    "value": req.body.referenceNo
+                },
+                {
+                    "name": "TreeData",
+                    "value": req.body.attributes
+                },
+                {
+                    "name": "Type",
+                    "value": req.body.roleType
+                },
+                {
+                    "name": "Name",
+                    "value": req.body.name
+                }
+            ]
+        },
+        "filter": {
+            "indy": {
+                "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
+                "issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
+                "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+                "schema_issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
+                "schema_name": "Eco-Trust-Data",
+                "schema_version": "1.0"
+            }
+        },
+        "trace": false
+      }
 
       console.log(
         "holderBlockchainURL + sendProposalHolder",
