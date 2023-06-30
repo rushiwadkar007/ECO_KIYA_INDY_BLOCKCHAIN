@@ -137,7 +137,10 @@ const sendProposal = async (req, res) => {
           });
         })
         .catch((error) => {
-          console.log("response error ");
+          res.status(500).send({
+            error: error,
+            status: "Credentials Generation Proposal is not Accepted.",
+          });
         });
       // res.status(200).json({
       //   status: "Credentials Generation Proposal Accepted."
