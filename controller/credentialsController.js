@@ -226,7 +226,6 @@ const getCredentialRequests = async (req, res) => {
       const requests = await axios.get(
         blockchainURL + issueCreds + `?state=proposal-received`
       );
-
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
@@ -239,7 +238,6 @@ const getCredentialRequests = async (req, res) => {
       const pageSize = latestRequests.length / 10;
       let pageNumber = req.query.pageNumber;
       const credData = await paginate(latestRequests, pageSize, pageNumber);
-      console.log(credData);
       const paginatedCreds = credData.length !== 0 ?  credData : `Total credential requests ${credData.latestRequests.length} are rendered!`;
       res.status(200).json({
         data: paginatedCreds,
@@ -251,7 +249,12 @@ const getCredentialRequests = async (req, res) => {
         status: "Max Data limit reached!",
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({
+      data: null,
+      error: error
+    });
+  }
 };
 
 module.exports = {
