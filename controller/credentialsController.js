@@ -222,7 +222,7 @@ function paginate(array, page_size, page_number) {
 
 const getCredentialRequests = async (req, res) => {
   try {
-    const { fromDate, toDate } = req.query;
+    const { fromDate, toDate, refNO } = req.query;
     try {
       const requests = await axios.get(
         blockchainURL + issueCreds + `?state=proposal-received`
@@ -237,6 +237,7 @@ const getCredentialRequests = async (req, res) => {
         );
       });
       let pageNumber = req.query.pageNumber;
+      // condition 1 - Data based on date range.
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
         let d1 = fromDate.split("/");
         let d2 = toDate.split("/");
@@ -255,26 +256,54 @@ const getCredentialRequests = async (req, res) => {
           }
         });
         const rangePageSize = rangeData.length / 5;
-        const credRangeData = await paginate(rangeData, rangePageSize, pageNumber);
+        const credRangeData = await paginate(
+          rangeData,
+          rangePageSize,
+          pageNumber
+        );
         const paginatedRangeCreds =
-        credRangeData.length !== 0
+          credRangeData.length !== 0
             ? credRangeData
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
-        res.status(200).json({
-          data: paginatedRangeCreds,
-          status: "Data Found!",
-        });
-      } else {
+
+        if (refNO) {
+          const refNoData = credRangeData.filter((item) => {
+            return item;
+          });
+          res.status(200).json({
+            data: refNoData,
+            status: "Data Found!",
+          });
+        } else {
+          res.status(200).json({
+            data: paginatedRangeCreds,
+            status: "Data Found!",
+          });
+        }
+      }
+      //condition 2 - Data based latest data
+      else {
         const pageSize = latestRequests.length / 10;
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
             ? credData
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
-        res.status(200).json({
-          data: paginatedCreds,
-          status: "Data Found!",
-        });
+
+        if (refNO) {
+          const refNoData = paginatedCreds.filter((item) => {
+            return item;
+          });
+          res.status(200).json({
+            data: refNoData,
+            status: "Data Found!",
+          });
+        } else {
+          res.status(200).json({
+            data: paginatedCreds,
+            status: "Data Found!",
+          });
+        }
       }
     } catch (error) {
       res.status(404).json({
