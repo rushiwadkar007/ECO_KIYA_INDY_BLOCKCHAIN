@@ -15,7 +15,6 @@ const {
 
 const sendProposal = async (req, res) => {
   try {
-
     try {
       // const connectiondataResp = await axios.get(
       //   holderBlockchainURL + `/connections`
@@ -27,42 +26,42 @@ const sendProposal = async (req, res) => {
       };
 
       const proposalBody = {
-        "auto_remove": true,
-        "comment": "ECO Credentials Generation Request",
-        "connection_id": "0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30",
-        "credential_preview": {
-            "@type": "issue-credential/2.0/credential-preview",
-            "attributes": [
-                {
-                    "name": "RefNumber",
-                    "value": req.body.referenceNo
-                },
-                {
-                    "name": "TreeData",
-                    "value": req.body.attributes
-                },
-                {
-                    "name": "Type",
-                    "value": req.body.roleType
-                },
-                {
-                    "name": "Name",
-                    "value": req.body.name
-                }
-            ]
+        auto_remove: true,
+        comment: "ECO Credentials Generation Request",
+        connection_id: "0b6d25bf-1ae0-4fdd-ba06-c4f5e37fbf30",
+        credential_preview: {
+          "@type": "issue-credential/2.0/credential-preview",
+          attributes: [
+            {
+              name: "RefNumber",
+              value: req.body.referenceNo,
+            },
+            {
+              name: "TreeData",
+              value: req.body.attributes,
+            },
+            {
+              name: "Type",
+              value: req.body.roleType,
+            },
+            {
+              name: "Name",
+              value: req.body.name,
+            },
+          ],
         },
-        "filter": {
-            "indy": {
-                "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
-                "issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-                "schema_id": "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
-                "schema_issuer_did": "3EcM8j9RTNLQMbwQ1K8Dy3",
-                "schema_name": "Eco-Trust-Data",
-                "schema_version": "1.0"
-            }
+        filter: {
+          indy: {
+            cred_def_id: "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
+            issuer_did: "3EcM8j9RTNLQMbwQ1K8Dy3",
+            schema_id: "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
+            schema_issuer_did: "3EcM8j9RTNLQMbwQ1K8Dy3",
+            schema_name: "Eco-Trust-Data",
+            schema_version: "1.0",
+          },
         },
-        "trace": false
-      }
+        trace: false,
+      };
 
       await axios
         .post(
@@ -216,4 +215,44 @@ const issueCredentials = async (req, res) => {
   }
 };
 
-module.exports = { sendProposal, sendOffer, sendRequest, issueCredentials };
+const getCredentialRequests = async (req, res) => {
+  try {
+    console.log(`${blockchainURL}${issueCreds}`);
+    try {
+      const requests = await axios.get(blockchainURL + issueCreds);
+
+      const credRequests = requests.data.results.filter((item) => {
+        if (item.cred_ex_record.state === "proposal-received") {
+          return item.cred_ex_record.created_at;
+        }
+      });
+
+      const latestRequests = credRequests.sort(function (a, b) {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return (
+          new Date(b.cred_ex_record.created_at) -
+          new Date(a.cred_ex_record.created_at)
+        );
+      });
+
+      res.status(200).json({
+        data: latestRequests,
+        status: "Data Found!",
+      });
+    } catch (error) {
+      res.status(404).json({
+        data: null,
+        error: error,
+      });
+    }
+  } catch (error) {}
+};
+
+module.exports = {
+  sendProposal,
+  sendOffer,
+  sendRequest,
+  issueCredentials,
+  getCredentialRequests,
+};

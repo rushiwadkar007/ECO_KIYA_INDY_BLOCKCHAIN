@@ -5,15 +5,17 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const port = process.env.PORT || 3000;
 const blockchainRoute = require("./routes/createConnectionRoute");
-const schemaRoute = require('./routes/schemaRoute')
-const credentialRoute = require('./routes/credentialsRoute');
+const schemaRoute = require("./routes/schemaRoute");
+const credentialRoute = require("./routes/credentialsRoute");
 const walletRoute = require("./routes/walletRoutes");
 
 //middlewares
 app.use(express.json({ limit: "5mb", extended: true }));
-app.use(cors({
-  origin: 'http://120.20.2.139'
-}));
+app.use(
+  cors({
+    origin: "http://120.20.2.139",
+  })
+);
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
