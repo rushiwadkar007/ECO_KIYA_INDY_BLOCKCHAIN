@@ -215,19 +215,19 @@ const issueCredentials = async (req, res) => {
   }
 };
 
+function paginate(array, page_size, page_number) {
+  // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+  return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
 const getCredentialRequests = async (req, res) => {
   try {
-    console.log(`${blockchainURL}${issueCreds}`);
     try {
-      const requests = await axios.get(blockchainURL + issueCreds);
+      const requests = await axios.get(
+        blockchainURL + issueCreds + `?state=proposal-received`
+      );
 
-      const credRequests = requests.data.results.filter((item) => {
-        if (item.cred_ex_record.state === "proposal-received") {
-          return item.cred_ex_record.created_at;
-        }
-      });
-
-      const latestRequests = credRequests.sort(function (a, b) {
+      const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
         return (
@@ -236,14 +236,19 @@ const getCredentialRequests = async (req, res) => {
         );
       });
 
+      const pageSize = latestRequests.length / 10;
+      let pageNumber = req.query.pageNumber;
+      const credData = await paginate(latestRequests, pageSize, pageNumber);
+      console.log(credData);
+      const paginatedCreds = credData.length !== 0 ?  credData : `Total credential requests ${credData.latestRequests.length} are rendered!`;
       res.status(200).json({
-        data: latestRequests,
+        data: paginatedCreds,
         status: "Data Found!",
       });
     } catch (error) {
       res.status(404).json({
-        data: null,
-        error: error,
+        data: [],
+        status: "Max Data limit reached!",
       });
     }
   } catch (error) {}
