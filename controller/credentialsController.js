@@ -236,8 +236,6 @@ const getCredentialRequests = async (req, res) => {
           new Date(a.cred_ex_record.created_at)
         );
       });
-
-
       let pageNumber = req.query.pageNumber;
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
         let d1 = fromDate.split("/");
@@ -256,9 +254,8 @@ const getCredentialRequests = async (req, res) => {
             return item;
           }
         });
-        const rangePageSize = rangeData.length / 10;
+        const rangePageSize = rangeData.length / 5;
         const credRangeData = await paginate(rangeData, rangePageSize, pageNumber);
-        console.log("credRangeData", credRangeData)
         const paginatedRangeCreds =
         credRangeData.length !== 0
             ? credRangeData
