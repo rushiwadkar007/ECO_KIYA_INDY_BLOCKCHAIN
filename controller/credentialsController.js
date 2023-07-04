@@ -16,9 +16,6 @@ const {
 const sendProposal = async (req, res) => {
   try {
     try {
-      // const connectiondataResp = await axios.get(
-      //   holderBlockchainURL + `/connections`
-      // );
 
       const headers = {
         Accept: "application/json",
@@ -222,7 +219,7 @@ const getCredentialRequests = async (req, res) => {
     const { fromDate, toDate, refNO } = req.query;
     try {
       const requests = await axios.get(
-        blockchainURL + issueCreds + `?state=proposal-received`
+        blockchainURL + issueCreds + `?state=offer-sent`
       );
 
       const latestRequests = requests.data.results.sort(function (a, b) {
