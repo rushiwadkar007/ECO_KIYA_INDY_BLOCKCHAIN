@@ -316,11 +316,12 @@ const getCredentialRequests = async (req, res) => {
 const getCredOffers = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
+    console.log(holderBlockchainURL + issueCreds + `?state=offer-received`);
     try {
       const requests = await axios.get(
-        blockchainURL + issueCreds + `?state=offer-received`
+        holderBlockchainURL + issueCreds + `?state=offer-received`
       );
-
+      console.log("requests", requests)
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
