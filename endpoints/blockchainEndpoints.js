@@ -1,6 +1,6 @@
 // Create Connection
-const createConnRequest = `/connections/create-invitation`;
-const receiveConnRequest = `/connections/receive-invitation`;
+const createConnRequest = `/out-of-band/create-invitation`;
+const receiveConnRequest = `/out-of-band/receive-invitation`;
 const fetchConnectionMetadata = `/connections/fetchMetadata`;
 const acceptConnRequest = `/connections/accept-invitation`;
 // Schema Creation
