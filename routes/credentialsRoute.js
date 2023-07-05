@@ -8,11 +8,13 @@ var jsonParser = bodyParser.json();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const {sendProposal, sendOffer, sendRequest, issueCredentials, getCredentialRequests}=  require("../controller/credentialsController")
+const {sendProposal, sendOffer, sendRequest, issueCredentials, getCredentialRequests, getCredOffers}=  require("../controller/credentialsController")
 
 router.post("/sendProposal", urlencodedParser, sendProposal);
 
 router.post("/sendOffer", urlencodedParser, sendOffer);
+
+router.get("/getCredOffers", getCredOffers);
 
 router.post("/sendRequest", urlencodedParser, sendRequest);
 
