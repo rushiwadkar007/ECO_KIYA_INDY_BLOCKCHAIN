@@ -8,7 +8,7 @@ var jsonParser = bodyParser.json();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const {sendProposal, sendOffer, sendRequest, issueCredentials, getCredentialRequests, getCredOffers}=  require("../controller/credentialsController")
+const {sendProposal, sendOffer, sendRequest, issueCredentials, getCredentialRequests, getCredOffers, getCredReceivedRequests}=  require("../controller/credentialsController")
 
 router.post("/sendProposal", urlencodedParser, sendProposal);
 
@@ -21,6 +21,8 @@ router.post("/sendRequest", urlencodedParser, sendRequest);
 router.post("/issueCredentials", urlencodedParser, issueCredentials);
 
 router.get("/getCredReuests", getCredentialRequests);
+
+router.get("/getReceivedRequest", getCredReceivedRequests);
 
 module.exports = router;
 

@@ -16,7 +16,6 @@ const {
 const sendProposal = async (req, res) => {
   try {
     try {
-
       const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -210,6 +209,7 @@ const issueCredentials = async (req, res) => {
 };
 
 function paginate(array, page_size, page_number) {
+  console.log(array, page_size, page_number);
   // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
@@ -277,7 +277,13 @@ const getCredentialRequests = async (req, res) => {
       }
       //condition 2 - Data based latest data
       else {
-        const pageSize = latestRequests.length / 10;
+        let pageSize;
+        if(latestRequests.length < 10){
+          pageSize = 1
+        }
+        else{
+          pageSize = latestRequests.length / 10;
+        }   
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
@@ -321,7 +327,7 @@ const getCredOffers = async (req, res) => {
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=offer-received`
       );
-      console.log("requests", requests)
+      console.log("requests", requests);
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
@@ -377,7 +383,13 @@ const getCredOffers = async (req, res) => {
       }
       //condition 2 - Data based latest data
       else {
-        const pageSize = latestRequests.length / 10;
+        let pageSize;
+        if(latestRequests.length < 10){
+          pageSize = 1
+        }
+        else{
+          pageSize = latestRequests.length / 10;
+        }   
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
@@ -416,6 +428,7 @@ const getCredOffers = async (req, res) => {
 const getCredReceivedRequests = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
+    console.log(blockchainURL + issueCreds + `?state=request-received`);
     try {
       const requests = await axios.get(
         blockchainURL + issueCreds + `?state=request-received`
@@ -476,13 +489,20 @@ const getCredReceivedRequests = async (req, res) => {
       }
       //condition 2 - Data based latest data
       else {
-        const pageSize = latestRequests.length / 10;
+        console.log("paginatedCreds", latestRequests);
+        let pageSize;
+        if(latestRequests.length < 10){
+          pageSize = 1
+        }
+        else{
+          pageSize = latestRequests.length / 10;
+        }        
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
             ? credData
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
-
+        
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
             return item;
@@ -518,5 +538,5 @@ module.exports = {
   issueCredentials,
   getCredentialRequests,
   getCredOffers,
-  getCredReceivedRequests
+  getCredReceivedRequests,
 };
