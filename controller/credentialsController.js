@@ -48,6 +48,7 @@ const sendProposal = async (req, res) => {
         },
         filter: {
           indy: {
+            cred_def_id: "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1",
             issuer_did: "6QpgFLwwgo7ffnQiKGNbxi",
             schema_id: "6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:1.0",
             schema_issuer_did: "6QpgFLwwgo7ffnQiKGNbxi",
@@ -278,12 +279,11 @@ const getCredentialRequests = async (req, res) => {
       //condition 2 - Data based latest data
       else {
         let pageSize;
-        if(latestRequests.length < 10){
-          pageSize = 1
-        }
-        else{
+        if (latestRequests.length < 10) {
+          pageSize = 1;
+        } else {
           pageSize = latestRequests.length / 10;
-        }   
+        }
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
@@ -384,12 +384,11 @@ const getCredOffers = async (req, res) => {
       //condition 2 - Data based latest data
       else {
         let pageSize;
-        if(latestRequests.length < 10){
-          pageSize = 1
-        }
-        else{
+        if (latestRequests.length < 10) {
+          pageSize = 1;
+        } else {
           pageSize = latestRequests.length / 10;
-        }   
+        }
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
@@ -491,18 +490,17 @@ const getCredReceivedRequests = async (req, res) => {
       else {
         console.log("paginatedCreds", latestRequests);
         let pageSize;
-        if(latestRequests.length < 10){
-          pageSize = 1
-        }
-        else{
+        if (latestRequests.length < 10) {
+          pageSize = 1;
+        } else {
           pageSize = latestRequests.length / 10;
-        }        
+        }
         const credData = await paginate(latestRequests, pageSize, pageNumber);
         const paginatedCreds =
           credData.length !== 0
             ? credData
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
-        
+
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
             return item;
