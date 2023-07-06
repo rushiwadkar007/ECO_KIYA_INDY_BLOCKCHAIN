@@ -210,7 +210,6 @@ const issueCredentials = async (req, res) => {
 };
 
 function paginate(array, page_size, page_number) {
-  console.log(array, page_size, page_number);
   // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
@@ -322,12 +321,10 @@ const getCredentialRequests = async (req, res) => {
 const getCredOffers = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
-    console.log(holderBlockchainURL + issueCreds + `?state=offer-received`);
     try {
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=offer-received`
       );
-      console.log("requests", requests);
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
@@ -427,7 +424,6 @@ const getCredOffers = async (req, res) => {
 const getCredReceivedRequests = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
-    console.log(blockchainURL + issueCreds + `?state=request-received`);
     try {
       const requests = await axios.get(
         blockchainURL + issueCreds + `?state=request-received`
@@ -488,7 +484,6 @@ const getCredReceivedRequests = async (req, res) => {
       }
       //condition 2 - Data based latest data
       else {
-        console.log("paginatedCreds", latestRequests);
         let pageSize;
         if (latestRequests.length < 10) {
           pageSize = 1;
@@ -533,10 +528,9 @@ const getCredReceivedRequests = async (req, res) => {
 const getCredIssued = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
-    console.log(blockchainURL + issueCreds + `?state=credential-received`);
     try {
       const requests = await axios.get(
-        blockchainURL + issueCreds + `?state=request-received`
+        holderBlockchainURL + issueCreds + `?state=credential-received`
       );
 
       const latestRequests = requests.data.results.sort(function (a, b) {
@@ -594,7 +588,6 @@ const getCredIssued = async (req, res) => {
       }
       //condition 2 - Data based latest data
       else {
-        console.log("paginatedCreds", latestRequests);
         let pageSize;
         if (latestRequests.length < 10) {
           pageSize = 1;
