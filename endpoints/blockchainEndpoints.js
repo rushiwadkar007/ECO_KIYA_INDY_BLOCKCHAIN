@@ -15,6 +15,7 @@ const sendProposalHolder = `/issue-credential-2.0/send-proposal`;
 const sendOfferIssuer = `/issue-credential-2.0/send-offer`;
 const sendRequestHolder = `/issue-credential-2.0/send-request`;
 const issueCreds = `/issue-credential-2.0/records`;
+const approveCred = `/issue`
 const storeCredentials = `/issue-credential-2.0/store-credentials`;
 
 // Credential Revocation APIs
@@ -24,4 +25,4 @@ const storeCredentials = `/issue-credential-2.0/store-credentials`;
 // wallet APIs
 
 // Ledger APIs
-module.exports = {createConnRequest, createSchemaDef, getSchema, receiveConnRequest, acceptConnRequest, fetchConnectionMetadata, createSchema, sendProposalHolder, sendOfferIssuer, sendRequestHolder, issueCreds, storeCredentials}
+module.exports = {createConnRequest, createSchemaDef, getSchema, approveCred, receiveConnRequest, acceptConnRequest, fetchConnectionMetadata, createSchema, sendProposalHolder, sendOfferIssuer, sendRequestHolder, issueCreds, storeCredentials}

@@ -11,6 +11,7 @@ const {
   sendOfferIssuer,
   sendRequestHolder,
   issueCreds,
+  approveCred,
 } = require("../endpoints/blockchainEndpoints");
 
 const sendProposal = async (req, res) => {
@@ -620,6 +621,47 @@ const getCredIssued = async (req, res) => {
         data: [],
         status: "Max Data limit reached!",
       });
+      requests;
+    }
+  } catch (error) {
+    res.status(500).json({
+      data: null,
+      error: error,
+    });
+  }
+};
+
+const approveCredentials = async (req, res) => {
+  try {
+    const postData = req.body;
+    console.log(
+      blockchainURL +
+        `/issue-credential-2.0/records/${req.body.cred_ex_id}` +
+        approveCred
+    );
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    try {
+      const requests = await axios.post(
+        blockchainURL +
+          `/issue-credential-2.0/records/${req.body.cred_ex_id}` +
+          approveCred,
+        postData,
+        {
+          headers,
+        }
+      );
+      res.status(200).json({
+        data:result.data,
+        status: "Credential Issued!"
+      })
+    } catch (error) {
+      res.status(404).json({
+        data: null,
+        error: error,
+      });
     }
   } catch (error) {
     res.status(500).json({
@@ -636,5 +678,6 @@ module.exports = {
   getCredentialRequests,
   getCredOffers,
   getCredReceivedRequests,
-  getCredIssued
+  getCredIssued,
+  approveCredentials,
 };
