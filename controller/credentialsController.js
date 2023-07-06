@@ -279,7 +279,7 @@ const getCredentialRequests = async (req, res) => {
       else {
         let pageSize;
         if (latestRequests.length < 10) {
-          pageSize = 1;
+          pageSize = 5;
         } else {
           pageSize = latestRequests.length / 10;
         }
@@ -382,7 +382,7 @@ const getCredOffers = async (req, res) => {
       else {
         let pageSize;
         if (latestRequests.length < 10) {
-          pageSize = 1;
+          pageSize = 5;
         } else {
           pageSize = latestRequests.length / 10;
         }
@@ -486,7 +486,7 @@ const getCredReceivedRequests = async (req, res) => {
       else {
         let pageSize;
         if (latestRequests.length < 10) {
-          pageSize = 1;
+          pageSize = 5;
         } else {
           pageSize = latestRequests.length / 10;
         }
@@ -590,7 +590,7 @@ const getCredIssued = async (req, res) => {
       else {
         let pageSize;
         if (latestRequests.length < 10) {
-          pageSize = 1;
+          pageSize = 5;
         } else {
           pageSize = latestRequests.length / 10;
         }
