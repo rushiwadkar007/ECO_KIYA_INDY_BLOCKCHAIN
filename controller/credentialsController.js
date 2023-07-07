@@ -250,7 +250,11 @@ const getCredentialRequests = async (req, res) => {
             return item;
           }
         });
-        const rangePageSize = rangeData.length / 5;
+        if (latestRequests.length < 10) {
+          rangePageSize = 5;
+        } else {
+          rangePageSize = latestRequests.length / 10;
+        }
         const credRangeData = await paginate(
           rangeData,
           rangePageSize,
@@ -322,6 +326,7 @@ const getCredentialRequests = async (req, res) => {
 const getCredOffers = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
+    console.log(fromDate && toDate && fromDate !== "" && toDate !== "");
     try {
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=offer-received`
@@ -337,11 +342,15 @@ const getCredOffers = async (req, res) => {
       let pageNumber = req.query.pageNumber;
       // condition 1 - Data based on date range.
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
+        
         let d1 = fromDate.split("/");
         let d2 = toDate.split("/");
+        console.log(d1, d2);
         var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]); // -1 because months are from 0 to 11
         var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
-        const rangeData = latestRequests.filter((item, index) => {
+        console.log(from, to);
+        const rangeData = requests.data.results.filter((item, index) => {
+          console.log(item)
           let date = new Date(item.cred_ex_record.created_at);
           const yyyy = date.getFullYear();
           let mm = date.getMonth() + 1;
@@ -349,11 +358,18 @@ const getCredOffers = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
+          console.log("check ", check)
           if (check > from && check < to) {
             return item;
           }
         });
-        const rangePageSize = rangeData.length / 5;
+
+        let rangePageSize;
+        if (latestRequests.length < 10) {
+          rangePageSize = 5;
+        } else {
+          rangePageSize = latestRequests.length / 10;
+        }
         const credRangeData = await paginate(
           rangeData,
           rangePageSize,
@@ -457,7 +473,11 @@ const getCredReceivedRequests = async (req, res) => {
             return item;
           }
         });
-        const rangePageSize = rangeData.length / 5;
+        if (latestRequests.length < 10) {
+          rangePageSize = 5;
+        } else {
+          rangePageSize = latestRequests.length / 10;
+        }
         const credRangeData = await paginate(
           rangeData,
           rangePageSize,
@@ -561,7 +581,11 @@ const getCredIssued = async (req, res) => {
             return item;
           }
         });
-        const rangePageSize = rangeData.length / 5;
+        if (latestRequests.length < 10) {
+          rangePageSize = 5;
+        } else {
+          rangePageSize = latestRequests.length / 10;
+        }
         const credRangeData = await paginate(
           rangeData,
           rangePageSize,
@@ -634,11 +658,6 @@ const getCredIssued = async (req, res) => {
 const approveCredentials = async (req, res) => {
   try {
     const postData = req.body;
-    console.log(
-      blockchainURL +
-        `/issue-credential-2.0/records/${req.body.cred_ex_id}` +
-        approveCred
-    );
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -653,11 +672,11 @@ const approveCredentials = async (req, res) => {
           headers,
         }
       );
-      console.log('requests ',requests);
+      console.log("requests ", requests);
       res.status(200).json({
-        data:requests.data,
-        status: "Credential Issued!"
-      })
+        data: requests.data,
+        status: "Credential Issued!",
+      });
     } catch (error) {
       res.status(404).json({
         data: null,
