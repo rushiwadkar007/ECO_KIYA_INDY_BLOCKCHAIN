@@ -267,7 +267,9 @@ const getCredentialRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -296,7 +298,9 @@ const getCredentialRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -381,7 +385,9 @@ const getCredOffers = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -410,7 +416,9 @@ const getCredOffers = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -489,7 +497,9 @@ const getCredReceivedRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -518,7 +528,9 @@ const getCredReceivedRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData,
@@ -597,7 +609,9 @@ const getCredIssued = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
             return item;
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -625,8 +639,11 @@ const getCredIssued = async (req, res) => {
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
         let refNoData;
         if (refNO) {
+          console.log("refNo", refNO)
           refNoData = paginatedCreds.filter((item) => {
-            return item;
+            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+              return item;
+              }
           });
           res.status(200).json({
             data: refNoData.length > 0 ? refNoData : paginatedCreds,
