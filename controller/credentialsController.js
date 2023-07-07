@@ -342,7 +342,6 @@ const getCredOffers = async (req, res) => {
       let pageNumber = req.query.pageNumber;
       // condition 1 - Data based on date range.
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
-        
         let d1 = fromDate.split("/");
         let d2 = toDate.split("/");
         console.log(d1, d2);
@@ -350,7 +349,7 @@ const getCredOffers = async (req, res) => {
         var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
         console.log(from, to);
         const rangeData = requests.data.results.filter((item, index) => {
-          console.log(item)
+          console.log(item);
           let date = new Date(item.cred_ex_record.created_at);
           const yyyy = date.getFullYear();
           let mm = date.getMonth() + 1;
@@ -358,7 +357,7 @@ const getCredOffers = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
-          console.log("check ", check)
+          console.log("check ", check);
           if (check > from && check < to) {
             return item;
           }
@@ -624,28 +623,21 @@ const getCredIssued = async (req, res) => {
           credData.length !== 0
             ? credData
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
-
+        let refNoData;
         if (refNO) {
-          const refNoData = paginatedCreds.filter((item) => {
+          refNoData = paginatedCreds.filter((item) => {
             return item;
           });
           res.status(200).json({
-            data: refNoData,
-            status: "Data Found!",
+            data: refNoData.length > 0 ? refNoData : paginatedCreds,
           });
-        } else {
-          res.status(200).json({
-            data: paginatedCreds,
-            status: "Data Found!",
-          });
-        }
+        }        
       }
     } catch (error) {
-      res.status(404).json({
+      res.status(404).send({
         data: [],
         status: "Max Data limit reached!",
       });
-      requests;
     }
   } catch (error) {
     res.status(500).json({
