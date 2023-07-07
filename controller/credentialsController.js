@@ -653,8 +653,9 @@ const approveCredentials = async (req, res) => {
           headers,
         }
       );
+      console.log('requests ',requests);
       res.status(200).json({
-        data:result.data,
+        data:requests.data,
         status: "Credential Issued!"
       })
     } catch (error) {
