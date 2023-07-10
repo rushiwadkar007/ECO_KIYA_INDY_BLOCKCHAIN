@@ -18,12 +18,10 @@ function paginate(array, page_size, page_number) {
 const getCredentialProofSentRequests = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
-    console.log(verifierBlockchainURL + proofRequests + `?state=request-sent`);
     try {
       const requests = await axios.get(
         verifierBlockchainURL + proofRequests + `?state=request-sent`
-      );      
-      console.log("requests", requests.data.results);
+      );
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
@@ -52,7 +50,6 @@ const getCredentialProofSentRequests = async (req, res) => {
             return item;
           }
         });
-        console.log("rangeData", rangeData);
         if (latestRequests.length < 10) {
           rangePageSize = 5;
         } else {
@@ -141,12 +138,10 @@ const getCredentialProofSentRequests = async (req, res) => {
 const getCredentialProofReceivedRequests = async (req, res) => {
     try {
       const { fromDate, toDate, refNO } = req.query;
-      console.log(verifierBlockchainURL + proofRequests + `?state=request-received`);
       try {
         const requests = await axios.get(
-          verifierBlockchainURL + proofRequests + `?state=request-received`
-        );      
-        console.log("requests", requests.data.results);
+            holderBlockchainURL + proofRequests + `?state=request-received`
+        );     
         const latestRequests = requests.data.results.sort(function (a, b) {
           // Turn your strings into dates, and then subtract them
           // to get a value that is either negative, positive, or zero.
@@ -175,7 +170,6 @@ const getCredentialProofReceivedRequests = async (req, res) => {
               return item;
             }
           });
-          console.log("rangeData", rangeData);
           if (latestRequests.length < 10) {
             rangePageSize = 5;
           } else {
