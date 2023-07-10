@@ -561,20 +561,19 @@ const getCredIssued = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
     try {
+
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=credential-received`
       );
-
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
         return (
-          new Date(b.cred_ex_record.created_at) -
-          new Date(a.cred_ex_record.created_at)
+          new Date(b.cred_ex_record.updated_at) -
+          new Date(a.cred_ex_record.updated_at)
         );
       });
       let pageNumber = req.query.pageNumber;
-      // condition 1 - Data based on date range.
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
         let d1 = fromDate.split("/");
         let d2 = toDate.split("/");
@@ -633,6 +632,7 @@ const getCredIssued = async (req, res) => {
           pageSize = latestRequests.length / 10;
         }
         const credData = await paginate(latestRequests, pageSize, pageNumber);
+        console.log("credData", credData);
         const paginatedCreds =
           credData.length !== 0
             ? credData
@@ -647,6 +647,11 @@ const getCredIssued = async (req, res) => {
           });
           res.status(200).json({
             data: refNoData.length > 0 ? refNoData : paginatedCreds,
+          });
+        }
+        else{
+          res.status(200).json({
+            data: paginatedCreds,
           });
         }        
       }
