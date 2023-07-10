@@ -8,6 +8,7 @@ const blockchainRoute = require("./routes/createConnectionRoute");
 const schemaRoute = require("./routes/schemaRoute");
 const credentialRoute = require("./routes/credentialsRoute");
 const walletRoute = require("./routes/walletRoutes");
+const proofRoute = require("./routes/presentProofRoute")
 
 //middlewares
 app.use(express.json({ limit: "5mb", extended: true }));
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 app.use("/eco-blockchain-api/v1", blockchainRoute);
 app.use("/credentials/v1", credentialRoute);
 app.use("/eco-wallet-details/v1", walletRoute);
+app.use("/eco-blockchain-api/eco-proof-presentation/v1", proofRoute);
 
 // Start the server
 app.listen(port, () => {

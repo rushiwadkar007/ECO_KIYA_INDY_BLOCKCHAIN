@@ -246,7 +246,7 @@ const getCredentialRequests = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
-          if (check > from && check < to) {
+          if (check >= from && check <= to) {
             return item;
           }
         });
@@ -362,7 +362,7 @@ const getCredOffers = async (req, res) => {
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
           console.log("check ", check);
-          if (check > from && check < to) {
+          if (check >= from && check <= to) {
             return item;
           }
         });
@@ -476,7 +476,7 @@ const getCredReceivedRequests = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
-          if (check > from && check < to) {
+          if (check >= from && check <= to) {
             return item;
           }
         });
@@ -587,7 +587,7 @@ const getCredIssued = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
-          if (check > from && check < to) {
+          if (check >= from && check <= to) {
             return item;
           }
         });
@@ -632,7 +632,6 @@ const getCredIssued = async (req, res) => {
           pageSize = latestRequests.length / 10;
         }
         const credData = await paginate(latestRequests, pageSize, pageNumber);
-        console.log("credData", credData);
         const paginatedCreds =
           credData.length !== 0
             ? credData
@@ -649,7 +648,7 @@ const getCredIssued = async (req, res) => {
             data: refNoData.length > 0 ? refNoData : paginatedCreds,
           });
         }
-        else{
+        else{ 
           res.status(200).json({
             data: paginatedCreds,
           });
