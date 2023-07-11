@@ -1,0 +1,74 @@
+{
+  "dif": {
+  },
+  "indy": {
+    "requested_attributes": {
+      "additionalProp1": {
+        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
+        "revealed": true
+      },
+      "additionalProp2": {
+        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
+        "revealed": true
+      },
+      "additionalProp3": {
+        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
+        "revealed": true
+      }
+    },
+    "requested_predicates": {
+    },
+    "self_attested_attributes": {
+    },
+    "trace": false
+  },
+  "trace": true
+}
+
+//Req body of send proof request
+{
+  "comment": "This is an eco presentation proof request",
+  "connection_id": "06a30d7b-967d-482e-8f7f-85076babbd9b",
+  "presentation_request": {
+    "indy": {
+      "name": "Proof of ECO Trust Cred Data",
+      "version": "1.0",
+      "requested_attributes": {
+        "0_RefNumber_uuid": {
+          "name": "RefNumber",
+          "restrictions": [
+            {
+              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+            }
+          ]
+        },
+        "0_Name_uuid": {
+          "name": "Name",
+          "restrictions": [
+            {
+              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+            }
+          ]
+        },
+        "0_TreeData_uuid": {
+          "name": "TreeData",
+          "restrictions": [
+            {
+              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+            }
+          ]
+        },
+"0_Type_uuid": {
+          "name": "Type",
+          "restrictions": [
+            {
+              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+            }
+          ]
+        }
+      },
+      "requested_predicates": {
+      }
+    }
+  }
+}
