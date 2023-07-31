@@ -1,74 +1,267 @@
 {
-  "dif": {
-  },
-  "indy": {
-    "requested_attributes": {
-      "additionalProp1": {
-        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
-        "revealed": true
-      },
-      "additionalProp2": {
-        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
-        "revealed": true
-      },
-      "additionalProp3": {
-        "cred_id": "487aeea9-a283-4c8b-b5c7-1c8766141bfc",
-        "revealed": true
-      }
-    },
-    "requested_predicates": {
-    },
-    "self_attested_attributes": {
-    },
-    "trace": false
-  },
-  "trace": true
-}
-
-//Req body of send proof request
-{
-  "comment": "This is an eco presentation proof request",
-  "connection_id": "06a30d7b-967d-482e-8f7f-85076babbd9b",
-  "presentation_request": {
-    "indy": {
-      "name": "Proof of ECO Trust Cred Data",
-      "version": "1.0",
-      "requested_attributes": {
-        "0_RefNumber_uuid": {
-          "name": "RefNumber",
-          "restrictions": [
+  "results": [
+    {
+      "cred_ex_record": {
+        "auto_issue": false,
+        "auto_offer": false,
+        "auto_remove": false,
+        "by_format": {
+          "cred_issue": {},
+          "cred_offer": {},
+          "cred_proposal": {},
+          "cred_request": {}
+        },
+        "connection_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "created_at": "2021-12-31T23:59:59Z",
+        "cred_ex_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_issue": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "https://didcomm.org/my-family/1.0/my-message-type",
+          "comment": "string",
+          "credentials~attach": [
             {
-              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "byte_count": 1234,
+              "data": {
+                "base64": "ey4uLn0=",
+                "json": {
+                  "sample": "content"
+                },
+                "jws": {
+                  "header": {
+                    "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                  },
+                  "protected": "ey4uLn0",
+                  "signature": "ey4uLn0",
+                  "signatures": [
+                    {
+                      "header": {
+                        "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                      },
+                      "protected": "ey4uLn0",
+                      "signature": "ey4uLn0"
+                    }
+                  ]
+                },
+                "links": [
+                  "https://link.to/data"
+                ],
+                "sha256": "617a48c7c8afe0521efdc03e5bb0ad9e655893e6b4b51f0e794d70fba132aacb"
+              },
+              "description": "view from doorway, facing east, with lights off",
+              "filename": "IMG1092348.png",
+              "lastmod_time": "2021-12-31T23:59:59Z",
+              "mime-type": "image/png"
+            }
+          ],
+          "formats": [
+            {
+              "attach_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "format": "aries/ld-proof-vc-detail@v1.0"
+            }
+          ],
+          "replacement_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        "cred_offer": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "https://didcomm.org/my-family/1.0/my-message-type",
+          "comment": "string",
+          "credential_preview": {
+            "@type": "issue-credential/2.0/credential-preview",
+            "attributes": [
+              {
+                "mime-type": "image/jpeg",
+                "name": "favourite_drink",
+                "value": "martini"
+              }
+            ]
+          },
+          "formats": [
+            {
+              "attach_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "format": "aries/ld-proof-vc-detail@v1.0"
+            }
+          ],
+          "offers~attach": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "byte_count": 1234,
+              "data": {
+                "base64": "ey4uLn0=",
+                "json": {
+                  "sample": "content"
+                },
+                "jws": {
+                  "header": {
+                    "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                  },
+                  "protected": "ey4uLn0",
+                  "signature": "ey4uLn0",
+                  "signatures": [
+                    {
+                      "header": {
+                        "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                      },
+                      "protected": "ey4uLn0",
+                      "signature": "ey4uLn0"
+                    }
+                  ]
+                },
+                "links": [
+                  "https://link.to/data"
+                ],
+                "sha256": "617a48c7c8afe0521efdc03e5bb0ad9e655893e6b4b51f0e794d70fba132aacb"
+              },
+              "description": "view from doorway, facing east, with lights off",
+              "filename": "IMG1092348.png",
+              "lastmod_time": "2021-12-31T23:59:59Z",
+              "mime-type": "image/png"
+            }
+          ],
+          "replacement_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        "cred_preview": {
+          "@type": "issue-credential/2.0/credential-preview",
+          "attributes": [
+            {
+              "mime-type": "image/jpeg",
+              "name": "favourite_drink",
+              "value": "martini"
             }
           ]
         },
-        "0_Name_uuid": {
-          "name": "Name",
-          "restrictions": [
+        "cred_proposal": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "https://didcomm.org/my-family/1.0/my-message-type",
+          "comment": "string",
+          "credential_preview": {
+            "@type": "issue-credential/2.0/credential-preview",
+            "attributes": [
+              {
+                "mime-type": "image/jpeg",
+                "name": "favourite_drink",
+                "value": "martini"
+              }
+            ]
+          },
+          "filters~attach": [
             {
-              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "byte_count": 1234,
+              "data": {
+                "base64": "ey4uLn0=",
+                "json": {
+                  "sample": "content"
+                },
+                "jws": {
+                  "header": {
+                    "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                  },
+                  "protected": "ey4uLn0",
+                  "signature": "ey4uLn0",
+                  "signatures": [
+                    {
+                      "header": {
+                        "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                      },
+                      "protected": "ey4uLn0",
+                      "signature": "ey4uLn0"
+                    }
+                  ]
+                },
+                "links": [
+                  "https://link.to/data"
+                ],
+                "sha256": "617a48c7c8afe0521efdc03e5bb0ad9e655893e6b4b51f0e794d70fba132aacb"
+              },
+              "description": "view from doorway, facing east, with lights off",
+              "filename": "IMG1092348.png",
+              "lastmod_time": "2021-12-31T23:59:59Z",
+              "mime-type": "image/png"
+            }
+          ],
+          "formats": [
+            {
+              "attach_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "format": "aries/ld-proof-vc-detail@v1.0"
             }
           ]
         },
-        "0_TreeData_uuid": {
-          "name": "TreeData",
-          "restrictions": [
+        "cred_request": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "https://didcomm.org/my-family/1.0/my-message-type",
+          "comment": "string",
+          "formats": [
             {
-              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
+              "attach_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "format": "aries/ld-proof-vc-detail@v1.0"
+            }
+          ],
+          "requests~attach": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "byte_count": 1234,
+              "data": {
+                "base64": "ey4uLn0=",
+                "json": {
+                  "sample": "content"
+                },
+                "jws": {
+                  "header": {
+                    "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                  },
+                  "protected": "ey4uLn0",
+                  "signature": "ey4uLn0",
+                  "signatures": [
+                    {
+                      "header": {
+                        "kid": "did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4"
+                      },
+                      "protected": "ey4uLn0",
+                      "signature": "ey4uLn0"
+                    }
+                  ]
+                },
+                "links": [
+                  "https://link.to/data"
+                ],
+                "sha256": "617a48c7c8afe0521efdc03e5bb0ad9e655893e6b4b51f0e794d70fba132aacb"
+              },
+              "description": "view from doorway, facing east, with lights off",
+              "filename": "IMG1092348.png",
+              "lastmod_time": "2021-12-31T23:59:59Z",
+              "mime-type": "image/png"
             }
           ]
         },
-"0_Type_uuid": {
-          "name": "Type",
-          "restrictions": [
-            {
-              "cred_def_id": "6QpgFLwwgo7ffnQiKGNbxi:3:CL:160:Eco Trust Data-1"
-            }
-          ]
-        }
+        "error_msg": "The front fell off",
+        "initiator": "self",
+        "parent_thread_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "role": "issuer",
+        "state": "done",
+        "thread_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "trace": true,
+        "updated_at": "2021-12-31T23:59:59Z"
       },
-      "requested_predicates": {
+      "indy": {
+        "created_at": "2021-12-31T23:59:59Z",
+        "cred_ex_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_ex_indy_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_id_stored": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_request_metadata": {},
+        "cred_rev_id": "12345",
+        "rev_reg_id": "WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0",
+        "state": "active",
+        "updated_at": "2021-12-31T23:59:59Z"
+      },
+      "ld_proof": {
+        "created_at": "2021-12-31T23:59:59Z",
+        "cred_ex_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_ex_ld_proof_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "cred_id_stored": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "state": "active",
+        "updated_at": "2021-12-31T23:59:59Z"
       }
     }
-  }
+  ]
 }

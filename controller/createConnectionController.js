@@ -22,7 +22,7 @@ const createConnectionRequest = async (req, res) => {
   try {
     const postData = req.body.body;
     const queryParams = `?alias=${req.query.alias}&auto_accept=${req.query.auto_accept}&multi_use=${req.query.multi_use}&public=${req.query.public}`;
-    console.log("blockchain url", postData);
+
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -72,10 +72,8 @@ const acceptConnectionRequest = async (req, res) => {
           headers
         }
       );
-      console.log("result of accept invitation is received", response.data);
       res.status(200).json({ data: response.data, status: "success" });
     } catch (error) {
-      console.error("Error during API request:", error.message);
       res.status(400).json({
         data: null,
         error: "Error occurred during API request.",
@@ -95,10 +93,6 @@ const receiveConnectionRequest = async (req, res) => {
     const postData = req.body;
 
     const queryParams = `?alias=${req.query.alias}&auto_accept=${req.query.auto_accept}&multi_use=${req.query.mediation_id}`;
-    console.log(
-      "blockchain url",
-      blockchainURL + receiveConnRequest + queryParams
-    );
 
     const headers = {
       Accept: "application/json",
@@ -116,18 +110,14 @@ const receiveConnectionRequest = async (req, res) => {
           headers,
         }
       );
-
-      console.log("result of receive invitation is received", response.data);
       res.status(200).json({ data: response.data, status: "success" });
     } catch (error) {
-      console.error("Error during API request:", error.message);
       res.status(400).json({
         data: null,
         error: "Error occurred during API request.",
       });
     }
   } catch (error) {
-    console.error("Server error:", error.message);
     res.status(500).json({
       data: null,
       error: "Server Error",
@@ -144,10 +134,8 @@ const fetchConnectionMetadata = async (req, res) => {
       const response = await axios.get(
         blockchainURL + `${conn_id}/metadata` + queryParams
       );
-      console.log("result of connection metadata", response.data);
       res.status(200).json({ data: response.data, status: "success" });
     } catch (error) {
-      console.error("Error during API request:", error.message);
       res.status(400).json({
         data: null,
         error: "Error occurred during API request.",

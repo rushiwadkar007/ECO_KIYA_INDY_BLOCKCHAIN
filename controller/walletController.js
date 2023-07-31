@@ -60,10 +60,7 @@ const walletDetails = async (req, res) => {
 const didDetails = async (req, res) => {
   try {
     const { did } = req.query;
-    console.log("did ", did)
     const didData = await axios.get(blockchainHolderURL + `/wallet/did`);
-
-    // console.log("wallet did", didData.data.results);
 
     if (didData.data.results.length > 0) {
       const filteredData = didData.data.results.map((item, index) => {
@@ -74,7 +71,6 @@ const didDetails = async (req, res) => {
             return item
         }
       });
-      console.log("fData", filteredData);
       const fData = filteredData.filter((item) => {
         if (item !== null || item !== undefined) {
           return item;

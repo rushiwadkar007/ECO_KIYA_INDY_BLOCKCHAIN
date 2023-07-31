@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const axios = require("axios");
 
+const crypto = require("crypto");
+
 const blockchainURL = process.env.Indy_Blockchain_STEWARDURL;
 
 const holderBlockchainURL = process.env.Indy_Blockchain_HOLDERURL;
@@ -25,7 +27,7 @@ const sendProposal = async (req, res) => {
       const proposalBody = {
         auto_remove: true,
         comment: "ECO Credentials Generation Request",
-        connection_id: "ff8cb58a-fe61-4b1d-b6b8-6d548b3f3478",
+        connection_id: "5c79140e-d712-4e38-9f29-f24891608d87",
         credential_preview: {
           "@type": "issue-credential/2.0/credential-preview",
           attributes: [
@@ -58,6 +60,39 @@ const sendProposal = async (req, res) => {
         trace: false,
       };
 
+      const schemas = await axios.get(
+        "http://172.20.2.139:8089/schemas/created"
+      );
+
+      const credentials = await axios.get(
+        "http://172.20.2.139:8089/issue-credential-2.0/records"
+      );
+      const val = "";
+
+      var treeDataHash = crypto.createHash("md5").update(req.body.attributes).digest("hex");
+
+      const isDataPresent = await credentials.data.results.filter((item, index) =>{
+        console.log("item;;;;;;;;;;;;;;;;", item.cred_ex_record.cred_proposal.credential_preview.attributes[1].value.toString());
+        if(item.cred_ex_record.cred_proposal.credential_preview.attributes[1].value.toString === treeDataHash){
+          return true;
+        }
+      })
+      console.log(
+        "credentials hash =======>>>>>>",
+        isDataPresent
+      );
+      const ecoSchemaData = await schemas.data.schema_ids.map((item, index) => {
+        if (item.match(/\b(6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:)\b/g)) {
+          return item;
+        }
+      });
+      
+      const filteredEcoSchema = ecoSchemaData.filter((item) => {
+        if (item !== undefined) {
+          return item;
+        }
+      });
+
       await axios
         .post(
           "http://172.20.2.139:8089/issue-credential-2.0/send-offer",
@@ -79,7 +114,7 @@ const sendProposal = async (req, res) => {
     } catch (error) {
       res.status(404).json({
         data: null,
-        status: `data not found + ${error}`,
+        status: `${error}`,
       });
     }
   } catch (error) {
@@ -267,9 +302,13 @@ const getCredentialRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -298,9 +337,13 @@ const getCredentialRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -330,7 +373,6 @@ const getCredentialRequests = async (req, res) => {
 const getCredOffers = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
-    console.log(fromDate && toDate && fromDate !== "" && toDate !== "");
     try {
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=offer-received`
@@ -348,12 +390,9 @@ const getCredOffers = async (req, res) => {
       if (fromDate && toDate && fromDate !== "" && toDate !== "") {
         let d1 = fromDate.split("/");
         let d2 = toDate.split("/");
-        console.log(d1, d2);
         var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]); // -1 because months are from 0 to 11
         var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
-        console.log(from, to);
         const rangeData = requests.data.results.filter((item, index) => {
-          console.log(item);
           let date = new Date(item.cred_ex_record.created_at);
           const yyyy = date.getFullYear();
           let mm = date.getMonth() + 1;
@@ -361,7 +400,6 @@ const getCredOffers = async (req, res) => {
           let d = `${dd}/${mm}/${yyyy}`;
           let d3 = d.split("/");
           let check = new Date(d3[2], parseInt(d3[1]) - 1, d3[0]);
-          console.log("check ", check);
           if (check >= from && check <= to) {
             return item;
           }
@@ -385,9 +423,13 @@ const getCredOffers = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -416,9 +458,13 @@ const getCredOffers = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -497,9 +543,13 @@ const getCredReceivedRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -528,9 +578,13 @@ const getCredReceivedRequests = async (req, res) => {
 
         if (refNO) {
           const refNoData = paginatedCreds.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData,
@@ -561,7 +615,6 @@ const getCredIssued = async (req, res) => {
   try {
     const { fromDate, toDate, refNO } = req.query;
     try {
-
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=credential-received`
       );
@@ -608,8 +661,12 @@ const getCredIssued = async (req, res) => {
 
         if (refNO) {
           const refNoData = credRangeData.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
-            return item;
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
+              return item;
             }
           });
           res.status(200).json({
@@ -638,21 +695,23 @@ const getCredIssued = async (req, res) => {
             : `Total credential requests ${credData.latestRequests.length} are rendered!`;
         let refNoData;
         if (refNO) {
-          console.log("refNo", refNO)
           refNoData = paginatedCreds.filter((item) => {
-            if(item.cred_ex_record.cred_offer.credential_preview.attributes[0]["value"] === refNO){
+            if (
+              item.cred_ex_record.cred_offer.credential_preview.attributes[0][
+                "value"
+              ] === refNO
+            ) {
               return item;
-              }
+            }
           });
           res.status(200).json({
             data: refNoData.length > 0 ? refNoData : paginatedCreds,
           });
-        }
-        else{ 
+        } else {
           res.status(200).json({
             data: paginatedCreds,
           });
-        }        
+        }
       }
     } catch (error) {
       res.status(404).send({
@@ -685,7 +744,6 @@ const approveCredentials = async (req, res) => {
           headers,
         }
       );
-      console.log("requests ", requests);
       res.status(200).json({
         data: requests.data,
         status: "Credential Issued!",

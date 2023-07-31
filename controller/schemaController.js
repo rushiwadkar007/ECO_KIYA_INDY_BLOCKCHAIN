@@ -37,10 +37,8 @@ const createSchemaStructure = async (req, res) => {
           headers,
         }
       );
-      console.log("Result of accept invitation is received", response.data);
       res.status(200).json({ data: response.data, status: "success" });
     } catch (error) {
-      console.error("Error during API request:", error.message);
       return res.status(400).json({
         data: null,
         error: "Error occurred during executing API request.",
