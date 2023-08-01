@@ -5,7 +5,6 @@ const axios = require("axios");
 const crypto = require("crypto");
 
 const blockchainURL = process.env.Indy_Blockchain_STEWARDURL;
-
 const holderBlockchainURL = process.env.Indy_Blockchain_HOLDERURL;
 
 const {
