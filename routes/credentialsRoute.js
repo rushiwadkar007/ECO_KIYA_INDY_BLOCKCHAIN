@@ -1,14 +1,24 @@
-var express = require('express');
+var express = require("express");
 
 const router = require("express").Router();
 
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
 
 var jsonParser = bodyParser.json();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const {sendProposal, sendOffer, sendRequest, issueCredentials, approveCredentials, getCredentialRequests, getCredOffers,getCredIssued, getCredReceivedRequests}=  require("../controller/credentialsController")
+const {
+  sendProposal,
+  sendOffer,
+  sendRequest,
+  issueCredentials,
+  approveCredentials,
+  getCredentialRequests,
+  getCredOffers,
+  getCredIssued,
+  getCredReceivedRequests,
+} = require("../controller/credentialsController");
 
 router.post("/sendProposal", urlencodedParser, sendProposal);
 
@@ -29,4 +39,4 @@ router.get("/getCredIssued", getCredIssued);
 router.post("/approveCredentials", urlencodedParser, approveCredentials);
 
 module.exports = router;
-
+ 

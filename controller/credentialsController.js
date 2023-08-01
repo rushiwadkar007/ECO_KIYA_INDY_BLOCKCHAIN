@@ -65,52 +65,150 @@ const sendProposal = async (req, res) => {
       );
 
       const credentials = await axios.get(
-        "http://172.20.2.139:8089/issue-credential-2.0/records"
+        "http://172.20.2.139:8092/credentials"
       );
-      const val = "";
+      var treeDataHash = crypto
+        .createHash("md5")
+        .update(req.body.attributes.split(" ").join(""))
+        .digest("hex");
 
-      var treeDataHash = crypto.createHash("md5").update(req.body.attributes).digest("hex");
-
-      const isDataPresent = await credentials.data.results.filter((item, index) =>{
-        console.log("item;;;;;;;;;;;;;;;;", item.cred_ex_record.cred_proposal.credential_preview.attributes[1].value.toString());
-        if(item.cred_ex_record.cred_proposal.credential_preview.attributes[1].value.toString === treeDataHash){
-          return true;
+      const hashMatchedData = await credentials.data.results.filter(
+        (item, index) => {
+          let matchHash = crypto
+            .createHash("md5")
+            .update(item.attrs.TreeData.split(" ").join(""))
+            .digest("hex");
+          if (matchHash === treeDataHash) {
+            return true;
+          }
         }
-      })
-      console.log(
-        "credentials hash =======>>>>>>",
-        isDataPresent
       );
-      const ecoSchemaData = await schemas.data.schema_ids.map((item, index) => {
-        if (item.match(/\b(6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data:)\b/g)) {
-          return item;
-        }
-      });
-      
-      const filteredEcoSchema = ecoSchemaData.filter((item) => {
-        if (item !== undefined) {
-          return item;
-        }
-      });
+      if (hashMatchedData.length > 0) {
+        const ecoSchemaData = await schemas.data.schema_ids.map(
+          (item, index) => {
+            if (item.match(/\b(6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data)\b/g)) {
+              console.log("item", item, index);
+              return item;
+            }
+          }
+        );
 
-      await axios
-        .post(
-          "http://172.20.2.139:8089/issue-credential-2.0/send-offer",
-          proposalBody,
-          { headers }
-        )
-        .then(async (result) => {
-          res.status(200).send({
-            data: result["data"],
-            status: "Credentials Generation Proposal Accepted.",
-          });
-        })
-        .catch((error) => {
-          res.status(500).send({
-            error: error,
-            status: "Credentials Generation Proposal is not Accepted.",
-          });
+        const filteredEcoSchema = ecoSchemaData.filter(function (val) {
+          return val !== undefined;
         });
+
+        let schemaVersion =
+          Number(
+            filteredEcoSchema[filteredEcoSchema.length - 1].substring(42)
+          ) + 2;
+        let schemaBody = {
+          attributes: ["RefNumber", "TreeData", "Type", "Name"],
+          schema_name: `Eco-Trust-Data-${filteredEcoSchema.length}`,
+          schema_version: `${filteredEcoSchema.length.toString()}.0`,
+        };
+        await axios
+          .post("http://172.20.2.139:8089/schemas", schemaBody, { headers })
+          .then(async (result) => {
+            const schemaDefBody = {
+              schema_id: result.data.schema_id,
+              support_revocation: false,
+              tag: `Eco Trust Data2-${result.data.schema.name}`,
+            };
+            await axios
+              .post(
+                "http://172.20.2.139:8089/credential-definitions",
+                schemaDefBody,
+                { headers }
+              )
+              .then(async (result) => {
+                const propBody = {
+                  auto_remove: true,
+                  comment: "ECO Credentials Generation Request",
+                  connection_id: "5c79140e-d712-4e38-9f29-f24891608d87",
+                  credential_preview: {
+                    "@type": "issue-credential/2.0/credential-preview",
+                    attributes: [
+                      {
+                        name: "RefNumber",
+                        value: req.body.referenceNo,
+                      },
+                      {
+                        name: "TreeData",
+                        value: req.body.attributes,
+                      },
+                      {
+                        name: "Type",
+                        value: req.body.roleType,
+                      },
+                      {
+                        name: "Name",
+                        value: req.body.name,
+                      },
+                    ],
+                  },
+                  filter: {
+                    indy: {
+                      cred_def_id: result["data"].sent.credential_definition_id,
+                      issuer_did: "6QpgFLwwgo7ffnQiKGNbxi",
+                      schema_id: schemaDefBody.schema_id,
+                      schema_issuer_did: "6QpgFLwwgo7ffnQiKGNbxi",
+                    },
+                  },
+                  trace: false,
+                };
+                await axios
+                  .post(
+                    "http://172.20.2.139:8089/issue-credential-2.0/send-offer",
+                    propBody,
+                    { headers }
+                  )
+                  .then(async (result) => {
+                    res.status(200).send({
+                      data: result["data"],
+                      status: "Credentials Generation Proposal Accepted.",
+                    });
+                  })
+                  .catch((error) => {
+                    res.status(500).send({
+                      error: error,
+                      status:
+                        "Credentials Generation Proposal is not Accepted.",
+                    });
+                  });
+              })
+              .catch((error) => {
+                res.status(500).send({
+                  error: error,
+                  status: "Credential Def Not Created",
+                });
+              });
+          })
+          .catch((error) => {
+            res.status(500).send({
+              error: error,
+              status: "Schema Creation failed!",
+            });
+          });
+      } else {
+        await axios
+          .post(
+            "http://172.20.2.139:8089/issue-credential-2.0/send-offer",
+            proposalBody,
+            { headers }
+          )
+          .then(async (result) => {
+            res.status(200).send({
+              data: result["data"],
+              status: "Credentials Generation Proposal Accepted.",
+            });
+          })
+          .catch((error) => {
+            res.status(500).send({
+              error: error,
+              status: "Credentials Generation Proposal is not Accepted.",
+            });
+          });
+      }
     } catch (error) {
       res.status(404).json({
         data: null,
