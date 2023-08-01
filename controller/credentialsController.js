@@ -187,7 +187,7 @@ const sendProposal = async (req, res) => {
             res.status(500).send({
               error: error,
               status: "Schema Creation failed!",
-            });
+            })
           });
       } else {
         await axios
