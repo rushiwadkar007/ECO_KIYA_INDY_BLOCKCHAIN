@@ -65,11 +65,27 @@ const sendProposal = async (req, res) => {
       const credentials = await axios.get(
         "http://172.20.2.139:8092/credentials"
       );
+      const requests = await axios.get(
+        holderBlockchainURL + issueCreds + `?state=offer-received`
+      );
+      // console.log("requests...", item.cred_ex_record.cred_offer.credential_preview.attributes[1].value);
       var treeDataHash = crypto
         .createHash("md5")
         .update(req.body.attributes.split(" ").join(""))
         .digest("hex");
-
+      
+      const hashOfferReceivedData = await requests.data.results.filter(
+        (item, index) => {
+          // console.log("item hashOfferReceivedData ", item.cred_ex_record.cred_offer.credential_preview.attributes[1].value.split(" ").join(""));
+          let matchHash = crypto
+            .createHash("md5")
+            .update(item.cred_ex_record.cred_offer.credential_preview.attributes[1].value.split(" ").join(""))
+            .digest("hex");
+          if (matchHash === treeDataHash) {
+            return true;
+          }
+        }
+      );
       const hashMatchedData = await credentials.data.results.filter(
         (item, index) => {
           let matchHash = crypto
@@ -81,7 +97,8 @@ const sendProposal = async (req, res) => {
           }
         }
       );
-      if (hashMatchedData.length > 0) {
+      console.log("ecoSchemaData", hashMatchedData.length > 0 || hashOfferReceivedData.length > 0);
+      if (hashMatchedData.length > 0 || hashOfferReceivedData.length > 0) {
         const ecoSchemaData = await schemas.data.schema_ids.map(
           (item, index) => {
             if (item.match(/\b(6QpgFLwwgo7ffnQiKGNbxi:2:Eco-Trust-Data)\b/g)) {
@@ -90,7 +107,7 @@ const sendProposal = async (req, res) => {
             }
           }
         );
-
+        
         const filteredEcoSchema = ecoSchemaData.filter(function (val) {
           return val !== undefined;
         });
