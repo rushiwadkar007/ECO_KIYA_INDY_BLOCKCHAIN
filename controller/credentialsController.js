@@ -714,6 +714,8 @@ const getCredIssued = async (req, res) => {
       const requests = await axios.get(
         holderBlockchainURL + issueCreds + `?state=credential-received`
       );
+      console.log("requests", requests);
+      if(requests.data.results.length === 0) {return res.status(404).json({Data: "Data not Found!"})}
       const latestRequests = requests.data.results.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.

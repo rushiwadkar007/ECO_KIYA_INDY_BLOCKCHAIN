@@ -16,13 +16,14 @@ const walletDetails = async (req, res) => {
       );
       if (credentialsData.data.results.length > 0) {
         const filteredData = credentialsData.data.results.map((item, index) => {
-          if (item.attrs.RefNumber === referenceNO && referenceNO !== null) {
+          console.log("credentialsData", item);
+          if (item.attrs.RefNumber === referenceNO && !referenceNO) {
             return item;
-          } else if (item.schemaID === schemaID && schemaID !== null) {
+          } else if (item.schemaID === schemaID && !schemaID) {
             return item;
-          } else if (item.cred_def_id === credDefID && credDefID !== null) {
+          } else if (item.cred_def_id === credDefID && !credDefID) {
             return item;
-          } else if (item.attrs.Type === roleType && roleType !== null) {
+          } else if (item.attrs.Type === roleType && !roleType) {
             return item;
           }
         });
